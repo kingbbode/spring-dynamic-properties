@@ -1,6 +1,5 @@
 package com.kingbbode.dynamic.properties.controller;
-
-import com.kingbbode.dynamic.properties.component.DynamicProperties;
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     
     @Autowired
-    private DynamicProperties dynamicProperties;
+    private PropertiesConfiguration dynamicProperties;
     
     @RequestMapping(value = "/")
     public String home(Model model){
-        model.addAttribute("dynamic", dynamicProperties.getProperty("dynamic"));
+        model.addAttribute("string", dynamicProperties.getString("dynamic.string"));
+        model.addAttribute("int", dynamicProperties.getInt("dynamic.int"));
+        model.addAttribute("list", dynamicProperties.getList("dynamic.list"));
         return "home";
     }
 }
