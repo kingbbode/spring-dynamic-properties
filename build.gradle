@@ -32,7 +32,22 @@ configurations {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
+	compile("org.springframework.boot:spring-boot-starter-freemarker")
+
+	compile("commons-codec:commons-codec:1.9")
+	compile("commons-io:commons-io:2.4")
+	compile("org.apache.commons:commons-lang3:3.1")
+
+	compile("org.apache.httpcomponents:httpclient") {
+		exclude(group: "commons-codec")
+	}
+
+	//properties dynamic
+	compile('commons-configuration:commons-configuration:1.10')
+	compile('commons-logging:commons-logging:1.2')
+	compile('commons-collections:commons-collections:3.2.2')
+	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
